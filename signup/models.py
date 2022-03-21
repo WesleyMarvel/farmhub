@@ -22,6 +22,8 @@ class Profile(models.Model):
 
 	property_image = models.ImageField(null = False)
 
+	whatsapp_number = models.IntegerField(null=False)
+
 	status_is_approved = models.BooleanField(default = False)
 
 	def __str__(self):

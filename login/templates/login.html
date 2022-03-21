@@ -20,7 +20,10 @@
         {% for message in messages %}
 			<h3>{{message}}</h3>
 		{% endfor %}
-
     </form>
+
+    <a href="{% url 'register' %}">
+        <button>Sign-Up</button>
+    </a>
 </body>
 </html>

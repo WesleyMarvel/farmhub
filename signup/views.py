@@ -22,6 +22,8 @@ def register(request):
 
 			property_name = request.POST["property_name"]
 
+			whatsapp_number = request.POST["whatsapp_number"]
+
 			property_description = request.POST["property_description"]
 
 			property_image = request.FILES["property_image"]
@@ -60,7 +62,7 @@ def register(request):
 
 					member.save()
 
-					profile = Profile(member=member, property_name=property_name, property_description=property_description, partnership_proposal=partnership_proposal, property_image=property_image)
+					profile = Profile(member=member, property_name=property_name, whatsapp_number=whatsapp_number, property_description=property_description, partnership_proposal=partnership_proposal, property_image=property_image)
 
 					profile.save()
 

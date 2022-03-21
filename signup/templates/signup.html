@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <form action="{% url 'register' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <input type="text" name="first_name" placeholder="First Name">
+
+        <input type="text" name="last_name" placeholder="Last Name">
+
+        <input type="email" name="email" placeholder="Email">
+
+        <input type="text" name="username" placeholder="Username">
+
+        <input type="text" name="property_name" placeholder="Property Name">
+
+        <input type="text" name="property_description" placeholder="Property Description">
+
+        <input type="text" name="partnership_proposal" placeholder="Partnership Proposal">
+
+        <input type="file" name="property_image" placeholder="Property image">
+
+        <input type="password" name="password" placeholder="Password">
+
+        <input type="password" name="cpassword" placeholder="Confirm Password">
+
+        <button type="submit">Submit</button>
+
+        {% for message in messages %}
+            <h3>{{message}}</h3>
+        {% endfor %}
+
+    </form>
+</body>
+</html>

@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <title>{{business_proposal.property_name}}</title>
+</head>
+<body>
+    {% for message in messages %}
+		<h3>{{message}}</h3>
+	{% endfor %}
+    {% if user.is_authenticated %}
+        
+            <h1 style="color:blue">Property Owner {{business_proposal.member}}</h1>
+			<h3>{{business_proposal.property_name}}</h3>
+			<img src="{{business_proposal.property_image}}" style="height: auto; width: 250px;">
+            <h3>{{business_proposal.property_description}}</h3>
+            <button>Connect</button>
+            
+            <a href="{% url 'home' %}">
+                <button>Home</button>
+            </a>
+
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+    {% else %}
+        <h1>To view potential partnerships please signup and login</h1>
+        <a href="{% url 'login' %}">
+            <button class="btn btn-primary">Login</button>
+        </a>
+    {% endif %}  
+
+
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

@@ -11,11 +11,15 @@ def home(request):
 
 		deals = Profile.objects.all()
 
-		return render(request, 'home.html', {"deals": deals})
+		members = Member.objects.all()
+
+		return render(request, 'home.html', {"deals": deals, "members":members})
 	
-def viewproposal(request, profile_id):
+def viewproposal(request, profile_id, member_id):
 
 	business_proposal = Profile.objects.get(pk=profile_id)
 
-	return render(request, 'proposal.html', {"business_proposal": business_proposal})
+	member = Member.objects.get(pk=member_id)
+
+	return render(request, 'proposal.html', {"business_proposal": business_proposal, "member":member})
 

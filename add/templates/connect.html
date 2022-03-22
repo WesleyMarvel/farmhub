@@ -7,25 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{% static 'bootstrap/css/bootstrap.css' %}">
     <link href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-    <title>Home</title>
+    <title>Connect</title>
 </head>
 <body>
     {% for message in messages %}
 		<h3>{{message}}</h3>
 	{% endfor %}
     {% if user.is_authenticated %}
-        {% for deal in deals %}
-            <h1 style="color:blue">Welcome {{deal.member}}</h1>
-			<h3>{{deal.property_name}}</h3>
-			<img src="{{deal.property_image}}" style="height: auto; width: 250px;">
-            <a href="{% url 'connect' deal.member.id %}">
-                <button>Connect</button>
-            </a>
-            <a href="{% url 'viewproposal' deal.id %}">
-                <button>View Proposal</button>
-            </a>
+        
+            <h1 style="color:blue">This is your partnership request code write it down while we validate request {{code}}</h1>
             
-		{% endfor %}
+            <a href="{% url 'home' %}">
+                <button>Home</button>
+            </a>
 
         <form action="{% url 'logout' %}" method="post">
             {% csrf_token %}
@@ -35,9 +29,6 @@
         <h1>To view potential partnerships please signup and login</h1>
         <a href="{% url 'login' %}">
             <button class="btn btn-primary">Login</button>
-        </a>
-        <a href="{% url 'register' %}">
-            <button>Sign-Up</button>
         </a>
     {% endif %}  
 
